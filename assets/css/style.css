@@ -10,3 +10,18 @@ img {
 .row {
     margin: 10px 5px;
 }
+
+#signInBox {
+    margin: 10px 20%;
+    padding: 50px;
+    background: rgb(226, 225, 225);
+    border: 2px solid rgb(201, 200, 200);
+}
+
+form {
+    margin: 5px;
+    background: white;
+    padding: 20px;
+    border: rgb(231, 231, 231);
+    border-radius: 5px;
+}
