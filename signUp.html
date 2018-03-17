@@ -55,8 +55,8 @@
     </nav>
 
     <div class="container">
-        <div class="row">
-            <form class="col-sm-5">
+        <div class="row" id="signInBox">
+            <form class="col-sm-6">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email address</label>
                     <input type="email" class="form-control" id="email" placeholder="name@example.com">
@@ -83,7 +83,8 @@
                 </div>
                 <button type="button" class="btn btn-info" id="signUp">Sign Up</button>
             </form>
-            <form class="col-sm-5">
+            <div class="col-sm-1"></div>
+            <form class="col-sm-5" id="sign">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter email">
@@ -93,7 +94,7 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="pass" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-info">Sign In</button>
+                <button type="submit" class="btn btn-info" id="signIn">Sign In</button>
             </form>
         </div>
     </div>

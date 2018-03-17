@@ -8,19 +8,22 @@ img {
 }
 
 .row {
-    margin: 10px 5px;
+    margin: 10px;
 }
 
-.container {
-    padding: 50px;
+#signInBox {
+    padding: 40px;
     background: rgb(226, 225, 225);
     border: 2px solid rgb(201, 200, 200);
 }
 
+#sign {
+    height: 100%;
+}
+
 form {
-    margin: 5px;
     background: white;
     padding: 20px;
-    border: rgb(231, 231, 231);
+    border: 1px solid rgb(231, 231, 231);
     border-radius: 5px;
 }
