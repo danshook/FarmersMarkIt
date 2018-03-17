@@ -11,8 +11,7 @@ img {
     margin: 10px 5px;
 }
 
-#signInBox {
-    margin: 10px 20%;
+.container {
     padding: 50px;
     background: rgb(226, 225, 225);
     border: 2px solid rgb(201, 200, 200);
