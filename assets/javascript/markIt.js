@@ -79,7 +79,7 @@ $(document).ready(function() {
   $("#divCheckPasswordMatch").hide();
 
   //Show when password is being typed in
-  $("#rePass").click(function() {
+  $("#rePass").on("keyup", function() {
     $("#divCheckPasswordMatch").show();
   });
   $("#rePass").keyup(checkPasswordMatch);
