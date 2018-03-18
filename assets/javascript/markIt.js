@@ -1,3 +1,4 @@
+// ---------- Sign up JS ----------
 $(document).ready(function() {
   // Initialize Firebase
   var config = {
@@ -11,14 +12,14 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  //NEW USER
+  //NEW USER variables
   var username = "";
   var email = "";
   var password = "";
   var checkPass = "";
   //Add to firebase
 
-  //Get user info
+  //Get user info and store into variable
   var email = $("#email") //email
     .val()
     .trim();
@@ -58,7 +59,9 @@ $(document).ready(function() {
       password: password
     });
   });
-  //Checks if password match
+
+  // ---------- Checks if password match ----------
+
   function checkPasswordMatch() {
     var password = $("#newPass")
       .val()
@@ -68,21 +71,22 @@ $(document).ready(function() {
       .trim();
     //Conditions to check if passwords that was typed in matches
     if (password != confirmPassword) {
-      $("#divCheckPasswordMatch").text("Passwords do not match!");
+      $("#CheckPasswordMatch").text("Passwords do not match!");
     } else {
-      $("#divCheckPasswordMatch").text("Passwords match.");
+      $("#CheckPasswordMatch").text("Passwords match.");
     }
   }
   checkPasswordMatch();
 
   //Hide div first
-  $("#divCheckPasswordMatch").hide();
+  $("#CheckPasswordMatch").hide();
 
   //Show when password is being typed in
   $("#rePass").on("keyup", function() {
-    $("#divCheckPasswordMatch").show();
+    $("#CheckPasswordMatch").show();
   });
   $("#rePass").keyup(checkPasswordMatch);
 });
 
-//RETURNING USERS
+// ---------- Check if username is available ----------
+// ---------- Check if email already exists ----------
