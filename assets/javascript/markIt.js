@@ -66,7 +66,7 @@ $(document).ready(function() {
     var confirmPassword = $("#rePass")
       .val()
       .trim();
-
+    //Conditions to check if passwords that was typed in matches
     if (password != confirmPassword) {
       $("#divCheckPasswordMatch").text("Passwords do not match!");
     } else {
@@ -74,6 +74,15 @@ $(document).ready(function() {
     }
   }
   checkPasswordMatch();
+
+  //Hide div first
+  $("#divCheckPasswordMatch").hide();
+
+  //Show when password is being typed in
+  $("#rePass").click(function() {
+    $("#divCheckPasswordMatch").show();
+  });
   $("#rePass").keyup(checkPasswordMatch);
 });
+
 //RETURNING USERS
