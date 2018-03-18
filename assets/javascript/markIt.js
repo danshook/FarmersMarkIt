@@ -52,21 +52,28 @@ $(document).ready(function() {
       .trim();
 
     // Code for "Setting values in the database"
-    database.ref().set({
+    database.ref("user").push({
       username: username,
       email: email,
       password: password
     });
   });
   //Checks if password match
-  function checkPassword() {
-    if (password === checkPass) {
-      return "Password match";
+  function checkPasswordMatch() {
+    var password = $("#newPass")
+      .val()
+      .trim();
+    var confirmPassword = $("#rePass")
+      .val()
+      .trim();
+
+    if (password != confirmPassword) {
+      $("#divCheckPasswordMatch").text("Passwords do not match!");
     } else {
-      return "The password you typed in doesn't match";
+      $("#divCheckPasswordMatch").text("Passwords match.");
     }
   }
-  checkPassword();
-
-  //RETURNING USERS
+  checkPasswordMatch();
+  $("#rePass").keyup(checkPasswordMatch);
 });
+//RETURNING USERS
