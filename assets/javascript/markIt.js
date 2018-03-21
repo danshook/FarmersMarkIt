@@ -100,6 +100,8 @@ $(document).ready(function() {
       // user is signed in
       console.log(user);
       alert("You are logged in!");
+      // Toggle on/off navigation bar for users' profile and log-out buttons
+      $("#profile").removeAttr("hidden");
       // window.location.replace(
       //   "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/index.html"
       // );
@@ -159,7 +161,10 @@ $(document).ready(function() {
   // Event listerner for user Sign-out then redirect to home page
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
+    console.log(user);
     alert("You are signed out");
-    // window.location.replace("https://google.com");
+    window.location.replace(
+      "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/index.html"
+    );
   });
 });
