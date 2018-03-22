@@ -12,26 +12,6 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  //NEW USER variables
-  var username = "";
-  var email = "";
-  var password = "";
-  var checkPass = "";
-  //Add to firebase
-
-  //Get user info and store into variable
-  var email = $("#email") //email
-    .val()
-    .trim();
-  var userName = $("#newUser") //username
-    .val()
-    .trim();
-  var password = $("#newPass") //password
-    .val()
-    .trim();
-  var checkPass = $("#rePass") //retyped password
-    .val()
-    .trim();
 
   //When user clicks sign up
   //Push values into user object
@@ -58,6 +38,16 @@ $(document).ready(function() {
       email: email,
       password: password
     });
+
+    //Create acc on firebase when info is submitted
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      });
   });
 
   // ---------- Checks if password match ----------
@@ -85,6 +75,7 @@ $(document).ready(function() {
   $("#rePass").on("keyup", function() {
     $("#CheckPasswordMatch").show();
   });
+  //Show alert in real time
   $("#rePass").keyup(checkPasswordMatch);
 
   // ---------- Check if username is available ----------
