@@ -12,6 +12,26 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
+  //NEW USER variables
+  var username = "";
+  var email = "";
+  var password = "";
+  var checkPass = "";
+  //Add to firebase
+
+  //Get user info and store into variable
+  var email = $("#email") //email
+    .val()
+    .trim();
+  var userName = $("#newUser") //username
+    .val()
+    .trim();
+  var password = $("#newPass") //password
+    .val()
+    .trim();
+  var checkPass = $("#rePass") //retyped password
+    .val()
+    .trim();
 
   //When user clicks sign up
   //Push values into user object
@@ -38,16 +58,6 @@ $(document).ready(function() {
       email: email,
       password: password
     });
-
-    //Create acc on firebase when info is submitted
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-      });
   });
 
   // ---------- Checks if password match ----------
@@ -75,7 +85,6 @@ $(document).ready(function() {
   $("#rePass").on("keyup", function() {
     $("#CheckPasswordMatch").show();
   });
-  //Show alert in real time
   $("#rePass").keyup(checkPasswordMatch);
 
   // ---------- Check if username is available ----------
@@ -85,15 +94,17 @@ $(document).ready(function() {
   //                         Sign-in
   // *********************************************************
 
+  // Current user uid
+  // userId: string;
   // Add a realtime listener
   firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // user is signed in
+    if (user != null) {
       console.log(user);
+      // user is signed in
       alert("You are logged in!");
-      // window.location.replace(
-      //   "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/index.html"
-      // );
+      // Toggle on/off navigation bar for users' profile and log-out buttons
+      $("#profile").removeAttr("hidden");
+      $(".profile").text(user.email);
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -141,16 +152,16 @@ $(document).ready(function() {
         }
         console.log(error);
       });
+
+    // *********************************************************
+    //                         Sign-out
+    // *********************************************************
   });
-
-  // *********************************************************
-  //                         Sign-out
-  // *********************************************************
-
   // Event listerner for user Sign-out then redirect to home page
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
-    alert("You are signed out");
-    // window.location.replace("https://google.com");
+    console.log(user);
+    alert("You are logged out");
+    window.location.replace("index.html");
   });
 });
