@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Farmers MarkIt</title>
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <!-- firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <!-- ?? -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <!-- Reset CSS -->
     <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <!-- Local CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -30,7 +38,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home
                         <span class="sr-only">(current)</span>
@@ -51,32 +59,53 @@
                     </div>
                 </li>
             </ul>
+            <div class="navbar-text" id="weather">
+                <!-- Weather.com API -->
+            </div>
+            <div class="nav-item dropdown" id="profile" hidden>
+                <span class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- username when logged in (remove hidden attr) -->
+                </span>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                       <iframe class="map1" width="300" height="230" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ9eY9KxGpK4cRmjbxPUeXZkU&key=AIzaSyA12rku7UBFWLUsLmRRgQ_fTEDE5we6GYo" allowfullscreen></iframe>
-                       <p class="card-text">Open Saturdays from 7am to 11am</p>
-                       <a href="http://gilbertmarket.com" target="_blank" class="btn btn-primary">Gilbert Farmers Market</a>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <iframe class="map1" width="300" height="230" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJRdGK5tYIK4cRomWbMu7BvrI&key=AIzaSyA12rku7UBFWLUsLmRRgQ_fTEDE5we6GYo" allowfullscreen></iframe>
-                        <p class="card-text">Open daily from 8am to 11pm</p>
-                        <a href="http://www.tempefarmersmarket.com" target="_blank" class="btn btn-primary">Tempe Farmers Market</a>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="card mb-3">
+            <img class="card-img-top bigImage" src="assets/images/carrot.jpg" alt="Card image cap" id="venPic">
+            <div class="card-body">
+                <h5 class="card-title" id="venName">Vendor Name</h5>
+                <p class="card-text" id="venInfo">Vendor product/info/prices</p>
             </div>
         </div>
-    
-    <script rel="text/javascript" href="assets/javascript/markIt.js"></script>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Schedule</h5>
+                        <p class="card-text" id="venSched">Date: etc.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Google Maps</h5>
+                        <!-- Google Maps API -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script rel="text/javascript" src="assets/javascript/markIt.js"></script>
 </body>
 
 </html>
