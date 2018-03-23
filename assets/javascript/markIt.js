@@ -17,29 +17,15 @@ $(document).ready(function() {
   var email = "";
   var password = "";
   var checkPass = "";
+
   //Add to firebase
-
-  //Get user info and store into variable
-  var email = $("#email") //email
-    .val()
-    .trim();
-  var userName = $("#newUser") //username
-    .val()
-    .trim();
-  var password = $("#newPass") //password
-    .val()
-    .trim();
-  var checkPass = $("#rePass") //retyped password
-    .val()
-    .trim();
-
   //When user clicks sign up
   //Push values into user object
   $("#signUp").on("click", function(event) {
     event.preventDefault();
 
     // Grabbed values from text-boxes
-    username = $("#newUser")
+   username = $("#newUser")
       .val()
       .trim();
     email = $("#email")
@@ -104,6 +90,7 @@ $(document).ready(function() {
       alert("You are logged in!");
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
+      //Writes email to toggle bar
       $(".profile").text(user.email);
     } else {
       // no user is signed in
@@ -161,7 +148,8 @@ $(document).ready(function() {
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
     console.log(user);
-    alert("You are logged out");
-    window.location.replace("index.html");
-  });
+    //alert("You are logged out");
+    $("#profile").removeAttr("hidden");
+    $(".profile").text("You are now logged out");
+    $("#signOut").text("Sign In");
 });
