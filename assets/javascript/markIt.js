@@ -12,45 +12,39 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  //NEW USER variables
-  var username = "";
-  var email = "";
-  var password = "";
-  var checkPass = "";
   //Add to firebase
-
-  //Get user info and store into variable
-  var email = $("#email") //email
-    .val()
-    .trim();
-  var userName = $("#newUser") //username
-    .val()
-    .trim();
-  var password = $("#newPass") //password
-    .val()
-    .trim();
-  var checkPass = $("#rePass") //retyped password
-    .val()
-    .trim();
 
   //When user clicks sign up
   //Push values into user object
   $("#signUp").on("click", function(event) {
     event.preventDefault();
 
+    var username = "";
+    var email = "";
+    var password = "";
+    var checkPass = "";
+
     // Grabbed values from text-boxes
-    username = $("#newUser")
-      .val()
-      .trim();
-    email = $("#email")
-      .val()
-      .trim();
-    password = $("#newPass")
-      .val()
-      .trim();
-    checkPass = $("#rePass")
-      .val()
-      .trim();
+    if ($("#newUser").length) {
+      username = $("#newUser")
+        .val()
+        .trim();
+    }
+    if ($("#email").length) {
+      email = $("#email")
+        .val()
+        .trim();
+    }
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+    if ($("#rePass").length) {
+      checkPass = $("#rePass")
+        .val()
+        .trim();
+    }
 
     // Code for "Setting values in the database"
     database.ref("user").push({
@@ -61,14 +55,19 @@ $(document).ready(function() {
   });
 
   // ---------- Checks if password match ----------
-
   function checkPasswordMatch() {
-    var password = $("#newPass")
-      .val()
-      .trim();
-    var confirmPassword = $("#rePass")
-      .val()
-      .trim();
+    var password = "";
+    var confirmPassword = "";
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+    if ($("#rePass").length) {
+      confirmPassword = $("#rePass")
+        .val()
+        .trim();
+    }
     //Conditions to check if passwords that was typed in matches
     if (password != confirmPassword) {
       $("#CheckPasswordMatch").text("Passwords do not match!");
@@ -101,7 +100,7 @@ $(document).ready(function() {
     if (user != null) {
       console.log(user);
       // user is signed in
-      alert("You are logged in!");
+      // alert("You are logged in!");
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
       $(".profile").text(user.email);
