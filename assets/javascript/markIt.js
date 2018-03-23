@@ -94,17 +94,43 @@ $(document).ready(function() {
   //                         Sign-in
   // *********************************************************
 
+  // Current user uid
+  // userId: string;
   // Add a realtime listener
   firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
+    if (user != null) {
       // user is signed in
       console.log(user);
+      name = user.displayName;
+      email = user.email;
+      photoUrl = user.photoURL;
+      emailVerified = user.emailVerified;
+      uid = user.uid; // The user's ID, unique to the Firebase project. Do NOT use
+      // this value to authenticate with your backend server, if
+      // you have one. Use User.getToken() instead.
+      $(".navUser").text(name);
+      // this.userId = user.uid;
+      // this.updateOnConnect();
       alert("You are logged in!");
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
+      // Clear sessionStorage
+      // sessionStorage.clear();
+      // Store user status in sessionStorage
+      // localStorage.setItem("uid", this.user);
+      // });
+
+      // Set persistence to 'Local'
+      // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+      // Redirect user to their profile page
       // window.location.replace(
-      //   "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/index.html"
+      //   "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/oneVendor.html"
       // );
+
+      // $(window).load(function() {
+      //   localStorage.setItem("test", true);
+      // });
+      // var user = firebase.auth().currentUser;
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -152,19 +178,49 @@ $(document).ready(function() {
         }
         console.log(error);
       });
-  });
 
-  // *********************************************************
-  //                         Sign-out
-  // *********************************************************
+    // TRYING PERSISTENCE HERE:
+    // Set LOCAL persistence
+    // firebase
+    //   .auth()
+    //   .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    //   .then(function() {
+    //     // Existing and future Auth states are now persisted in the current
+    //     // session only. Closing the window would clear any existing state even
+    //     // if a user forgets to sign out.
+    //     // ...
+    //     // New sign-in will be persisted with session persistence.
+    //     return firebase
+    //       .auth()
+    //       .signInWithEmailAndPassword(txtEmail, txtPassword);
+    //   })
+    //   .catch(function(error) {
+    //     // Handle Errors here.
+    //     var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     if (errorCode === "auth/wrong-password") {
+    //       alert("Wrong password");
+    //     } else {
+    //       alert(
+    //         "Error Code: " + errorCode + "\n\nError Message: " + errorMessage
+    //       );
+    //     }
+    //     console.log(error);
+    //   });
+    // // ENDING PERSISTENCE HERE.
 
-  // Event listerner for user Sign-out then redirect to home page
-  $("#signOut").on("click", function(event) {
-    firebase.auth().signOut();
-    console.log(user);
-    alert("You are signed out");
-    window.location.replace(
-      "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/index.html"
-    );
+    // *********************************************************
+    //                         Sign-out
+    // *********************************************************
+
+    // Event listerner for user Sign-out then redirect to home page
+    $("#logOut").on("click", function(event) {
+      firebase.auth().signOut();
+      console.log(user);
+      alert("You are logged out");
+      window.location.replace(
+        "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/index.html"
+      );
+    });
   });
 });
