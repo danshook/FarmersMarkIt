@@ -27,6 +27,10 @@
     border: 2px solid rgb(201, 200, 200);
 }
 
+#signUpBox, #sign {
+    margin-right: 10px;
+}
+
 #sign {
     height: 100%;
 }

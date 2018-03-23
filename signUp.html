@@ -63,7 +63,8 @@
                 <!-- Weather.com API -->
             </div>
             <div class="nav-item dropdown" id="profile" hidden>
-                <span class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="navUser nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     <!-- username when logged in (remove hidden attr) -->
                 </span>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -76,14 +77,22 @@
 
     <div class="container">
         <div class="row" id="signInBox">
-            <form class="col-sm-6">
+            <div class="col-sm-1"></div>
+            <form class="col-sm-6" id="signUpBox">
+                <div class="form-group" style="text-align:center">
+                    <h5>Sign Up</h5>
+                </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email address</label>
                     <input type="email" class="form-control" id="email" placeholder="name@example.com">
                 </div>
                 <div class="form-group">
-                    <label for="formGroupExampleInput">Create username</label>
-                    <input type="text" class="form-control" id="newUser" placeholder="">
+                    <label for="formGroupExampleInput">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="">
                 </div>
                 <div id="checkUserMatch"></div>
                 <div class="form-group">
@@ -95,6 +104,13 @@
                     <input type="password" class="form-control" id="rePass" placeholder="">
                 </div>
                 <div id="CheckPasswordMatch"></div>
+                <div class="form-group" style="text-align:center">
+                    <h5>Product Info</h5>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Product/Vendor Name</label>
+                    <input type="password" class="form-control" id="venName" placeholder="ex. Sauce Sisters">
+                </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Type of Vendor</label>
                     <select class="form-control" id="typeVen">
@@ -103,10 +119,35 @@
                         <option>Crafts</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-info" id="signUp">Sign Up</button>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Upload a Profile Pic</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02" id="venPic">Choose file</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Give Us a Short Vendor Bio</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Tell Us About Your Next Event</label>
+                            <input type="text" class="form-control" id="schedOneMarket" placeholder="Market/Boutique Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="schedOneAddress" placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="schedOneTime" placeholder="Open Hours">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info" id="signUp">Sign Up</button>
+                </div>
             </form>
-            <div class="col-sm-1"></div>
-            <form class="col-sm-5" id="sign">
+
+            <form class="col-sm-4" id="sign">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Enter email">
@@ -118,6 +159,7 @@
                 </div>
                 <button type="submit" class="btn btn-info" id="signIn">Sign In</button>
             </form>
+            <div class="col-sm-1"></div>
         </div>
     </div>
 
