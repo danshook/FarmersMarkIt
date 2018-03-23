@@ -65,3 +65,32 @@ form {
     font-size: 200%;
     font-weight: bold;
 }
+
+.btn {
+    background-color: #34B436;
+    outline-color: #34B436;
+    outline-offset: none;
+    float: right;
+}
+
+.btn:hover {
+    background-color: #34B436;
+}
+
+.map1 {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+.map2 {
+    float: right;
+
+}
+.map3 {
+    float: right;
+    
+}
+.map4 {
+    float: right;
+}
