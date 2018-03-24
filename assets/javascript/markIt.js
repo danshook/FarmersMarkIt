@@ -131,7 +131,7 @@ $(document).ready(function() {
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
       $(".profile").text(user.email);
-      //$(".sign-in").remove(); //Remove sign-in button when a user is signed in
+      $(".sign-in").remove(); //Remove sign-in button when a user is signed in
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -186,7 +186,6 @@ $(document).ready(function() {
   // Event listerner for user Sign-out then redirect to home page
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
-    console.log(user);
     window.location.replace("index.html");
     $("#profile").removeAttr("hidden");
     $(".profile").text("Signed Out");
