@@ -23,7 +23,7 @@ $(document).ready(function() {
     var email = "";
     var password = "";
     var checkPass = "";
-
+    var name = $("#firstName").val() + "" + $("#lastName").val();
     // Grabbed values from text-boxes
     if ($("#newUser").length) {
       username = $("#newUser")
@@ -49,7 +49,8 @@ $(document).ready(function() {
     // Code for "Setting values in the database"
     database.ref("user").push({
       email: email,
-      password: password
+      password: password,
+      name: name
     });
 
     //Create user with password
