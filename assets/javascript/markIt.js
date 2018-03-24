@@ -12,31 +12,39 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  //NEW USER variables
-  var username = "";
-  var email = "";
-  var password = "";
-  var checkPass = "";
-
   //Add to firebase
+
   //When user clicks sign up
   //Push values into user object
   $("#signUp").on("click", function(event) {
     event.preventDefault();
 
+    var username = "";
+    var email = "";
+    var password = "";
+    var checkPass = "";
+
     // Grabbed values from text-boxes
-   username = $("#newUser")
-      .val()
-      .trim();
-    email = $("#email")
-      .val()
-      .trim();
-    password = $("#newPass")
-      .val()
-      .trim();
-    checkPass = $("#rePass")
-      .val()
-      .trim();
+    if ($("#newUser").length) {
+      username = $("#newUser")
+        .val()
+        .trim();
+    }
+    if ($("#email").length) {
+      email = $("#email")
+        .val()
+        .trim();
+    }
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+    if ($("#rePass").length) {
+      checkPass = $("#rePass")
+        .val()
+        .trim();
+    }
 
     // Code for "Setting values in the database"
     database.ref("user").push({
@@ -44,17 +52,33 @@ $(document).ready(function() {
       email: email,
       password: password
     });
+
+    //Create user with password
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.location.replace("index.html"); //Send user to homepage
+      });
   });
 
   // ---------- Checks if password match ----------
-
   function checkPasswordMatch() {
-    var password = $("#newPass")
-      .val()
-      .trim();
-    var confirmPassword = $("#rePass")
-      .val()
-      .trim();
+    var password = "";
+    var confirmPassword = "";
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+    if ($("#rePass").length) {
+      confirmPassword = $("#rePass")
+        .val()
+        .trim();
+    }
     //Conditions to check if passwords that was typed in matches
     if (password != confirmPassword) {
       $("#CheckPasswordMatch").text("Passwords do not match!");
@@ -80,17 +104,14 @@ $(document).ready(function() {
   //                         Sign-in
   // *********************************************************
 
-  // Current user uid
-  // userId: string;
   // Add a realtime listener
   firebase.auth().onAuthStateChanged(function(user) {
     if (user != null) {
       console.log(user);
       // user is signed in
-      alert("You are logged in!");
+      // alert("You are logged in!");
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
-      //Writes email to toggle bar
       $(".profile").text(user.email);
     } else {
       // no user is signed in
@@ -148,8 +169,7 @@ $(document).ready(function() {
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
     console.log(user);
-    //alert("You are logged out");
-    $("#profile").removeAttr("hidden");
-    $(".profile").text("You are now logged out");
-    $("#signOut").text("Sign In");
+    alert("You are logged out");
+    window.location.replace("index.html");
+  });
 });
