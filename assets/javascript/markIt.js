@@ -18,7 +18,7 @@ $(document).ready(function() {
   var email = "";
   var password = "";
   var checkPass = "";
-  var name = $("#firstName").val() + "" + $("#lastName").val();
+  var name, photoUrl, uid;
 
   //When user clicks sign up
   //Push values into user object
@@ -54,12 +54,29 @@ $(document).ready(function() {
         .val()
         .trim();
     }
+    var name =
+      $("#firstName")
+        .val()
+        .trim() +
+      " " +
+      $("#lastName")
+        .val()
+        .trim();
+    var vendor = $("#venName")
+      .val()
+      .trim();
+    var type = $("#typeVen").val();
+
+    var bio = $("#bio").val();
 
     // Code for "Setting values in the database"
     database.ref("user").push({
       email: email,
       password: password,
-      name: name
+      name: name,
+      vendor: vendor,
+      type: type,
+      bio: bio
     });
 
     //Create user with password
@@ -115,7 +132,7 @@ $(document).ready(function() {
   //                         Sign-in
   // *********************************************************
 
-  // Add a realtime listener
+  //Realtime listener
   firebase.auth().onAuthStateChanged(function(user) {
     if (user != null) {
       console.log(user);
@@ -124,7 +141,7 @@ $(document).ready(function() {
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
       $(".profile").text(user.email);
-      $(".sign-in").remove();
+      //$(".sign-in").remove(); //Remove sign-in button when a user is signed in
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -172,20 +189,19 @@ $(document).ready(function() {
         }
         console.log(error);
       });
-
-    // *********************************************************
-    //                         Sign-out
-    // *********************************************************
   });
+  // *********************************************************
+  //                         Sign-out
+  // *********************************************************
   // Event listerner for user Sign-out then redirect to home page
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
     console.log(user);
-    alert("You are logged out");
     window.location.replace("index.html");
+    $("#profile").removeAttr("hidden");
+    $(".profile").text("Signed Out");
   });
+  // *********************************************************
+  //                         When Signed In
+  // *********************************************************
 });
-
-// *********************************************************
-//                         When Signed In
-// *********************************************************
