@@ -122,23 +122,24 @@ $(document).ready(function() {
   //                         Sign-in
   // *********************************************************
 
-  // Add a realtime listener
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user != null) {
-      console.log(user);
-      // user is signed in
-      // alert("You are logged in!");
-      // Toggle on/off navigation bar for users' profile and log-out buttons
-      $("#profile").removeAttr("hidden");
-      $(".profile").text(user.email);
-      //$(".sign-in").remove(); //Remove sign-in button when a user is signed in
-    } else {
-      // no user is signed in
-      console.log("not logged in");
-      // alert("Not logged in");
-    }
-  });
-
+  //Realtime listener
+  function userChange() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user != null) {
+        console.log(user);
+        // user is signed in
+        // alert("You are logged in!");
+        // Toggle on/off navigation bar for users' profile and log-out buttons
+        $("#profile").removeAttr("hidden");
+        $(".profile").text(user.email);
+        //$(".sign-in").remove(); //Remove sign-in button when a user is signed in
+      } else {
+        // no user is signed in
+        console.log("not logged in");
+        // alert("Not logged in");
+      }
+    });
+  }
   // Event listener for login event
   $("#signIn").on("click", function(event) {
     event.preventDefault();
@@ -179,19 +180,21 @@ $(document).ready(function() {
         }
         console.log(error);
       });
-
-    // *********************************************************
-    //                         Sign-out
-    // *********************************************************
+    userChange();
   });
+  // *********************************************************
+  //                         Sign-out
+  // *********************************************************
   // Event listerner for user Sign-out then redirect to home page
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
     console.log(user);
-    alert("You are signed out");
     window.location.replace("index.html");
+    $("#profile").removeAttr("hidden");
+    $(".profile").text("Signed Out");
   });
   // *********************************************************
   //                         When Signed In
   // *********************************************************
+  userChange();
 });
