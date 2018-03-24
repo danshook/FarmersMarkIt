@@ -13,33 +13,56 @@ $(document).ready(function() {
 
   var database = firebase.database();
 
+  //Global variables
+  var username = "";
+  var email = "";
+  var password = "";
+  var checkPass = "";
+  var name = $("#firstName").val() + "" + $("#lastName").val();
+
   //When user clicks sign up
   //Push values into user object
   $("#signUp").on("click", function(event) {
     event.preventDefault();
 
+    var username = "";
+    var email = "";
+    var password = "";
+    var checkPass = "";
+
     // Grabbed values from text-boxes
-    username = $("#newUser")
-      .val()
-      .trim();
-    email = $("#email")
-      .val()
-      .trim();
-    password = $("#newPass")
-      .val()
-      .trim();
-    checkPass = $("#rePass")
-      .val()
-      .trim();
+    if ($("#newUser").length) {
+      username = $("#newUser")
+        .val()
+        .trim();
+    }
+
+    if ($("#email").length) {
+      email = $("#email")
+        .val()
+        .trim();
+    }
+
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+
+    if ($("#rePass").length) {
+      checkPass = $("#rePass")
+        .val()
+        .trim();
+    }
 
     // Code for "Setting values in the database"
     database.ref("user").push({
-      username: username,
       email: email,
-      password: password
+      password: password,
+      name: name
     });
 
-    //Create acc on firebase when info is submitted
+    //Create user with password
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -47,18 +70,26 @@ $(document).ready(function() {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
+        window.location.replace("index.html"); //Send user to homepage
       });
   });
 
   // ---------- Checks if password match ----------
-
   function checkPasswordMatch() {
-    var password = $("#newPass")
-      .val()
-      .trim();
-    var confirmPassword = $("#rePass")
-      .val()
-      .trim();
+    var password = "";
+    var confirmPassword = "";
+
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+
+    if ($("#rePass").length) {
+      confirmPassword = $("#rePass")
+        .val()
+        .trim();
+    }
     //Conditions to check if passwords that was typed in matches
     if (password != confirmPassword) {
       $("#CheckPasswordMatch").text("Passwords do not match!");
@@ -75,7 +106,6 @@ $(document).ready(function() {
   $("#rePass").on("keyup", function() {
     $("#CheckPasswordMatch").show();
   });
-  //Show alert in real time
   $("#rePass").keyup(checkPasswordMatch);
 
   // ---------- Check if username is available ----------
@@ -87,13 +117,14 @@ $(document).ready(function() {
 
   // Add a realtime listener
   firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // user is signed in
+    if (user != null) {
       console.log(user);
-      alert("You are logged in!");
-      // window.location.replace(
-      //   "file:///Users/danielshook/Documents/UA%20Bootcamp/Project_1/FarmersMarkIt/index.html"
-      // );
+      // user is signed in
+      // alert("You are logged in!");
+      // Toggle on/off navigation bar for users' profile and log-out buttons
+      $("#profile").removeAttr("hidden");
+      $(".profile").text(user.email);
+      $(".sign-in").remove();
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -141,16 +172,20 @@ $(document).ready(function() {
         }
         console.log(error);
       });
+
+    // *********************************************************
+    //                         Sign-out
+    // *********************************************************
   });
-
-  // *********************************************************
-  //                         Sign-out
-  // *********************************************************
-
   // Event listerner for user Sign-out then redirect to home page
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
-    alert("You are signed out");
-    // window.location.replace("https://google.com");
+    console.log(user);
+    alert("You are logged out");
+    window.location.replace("index.html");
   });
 });
+
+// *********************************************************
+//                         When Signed In
+// *********************************************************

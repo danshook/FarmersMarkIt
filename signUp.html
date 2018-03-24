@@ -19,6 +19,8 @@
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <!-- Weather JS -->
+        <script type="text/javascript" src="assets/javascript/weather.js"></script>        
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <!-- Reset CSS -->
@@ -39,13 +41,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="index.html">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="signUp.html">Sign In</a>
+                    <a class="nav-link sign-in" href="signUp.html">Sign In</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,13 +65,13 @@
                 <!-- Weather.com API -->
             </div>
             <div class="nav-item dropdown" id="profile" hidden>
-                <span class="navUser nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                <span class="navUser nav-link dropdown-toggle profile" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <!-- username when logged in (remove hidden attr) -->
                 </span>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Log Out</a>
+                    <a class="dropdown-item log-out" href="#">Log Out</a>
                 </div>
             </div>
         </div>
@@ -84,20 +86,20 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">First Name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="">
+                    <input type="text" class="form-control" id="firstName" placeholder="" name="first-name">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="">
+                    <input type="text" class="form-control" id="lastName" placeholder="" name="last-name">
                 </div>
                 <div id="checkUserMatch"></div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Password</label>
-                    <input type="password" class="form-control" id="newPass" placeholder="">
+                    <input type="password" class="form-control" id="newPass" placeholder="" name="password">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Retype password</label>
@@ -109,7 +111,11 @@
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Product/Vendor Name</label>
+<<<<<<< HEAD
                     <input type="text" class="form-control" id="venName" placeholder="ex. Sauce Sisters">
+=======
+                    <input type="text" class="form-control" id="venName" placeholder="ex. Sauce Sisters" name="vendor-name">
+>>>>>>> a0c4788a19567a3645506200d43fbad0565e8e46
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Type of Vendor</label>
@@ -122,13 +128,13 @@
                 <div class="form-group">
                     <label for="formGroupExampleInput">Upload a Profile Pic</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="profile-img">
                         <label class="custom-file-label" for="inputGroupFile02" id="venPic">Choose file</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Give Us a Short Vendor Bio</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="bio"></textarea>
                 </div>
                 <div class="form-group">
                     <div class="form-group">
