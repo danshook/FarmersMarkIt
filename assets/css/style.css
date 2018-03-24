@@ -13,9 +13,6 @@
     color: white;
 }
 
-.bigImage {
-    height: 600px;
-}
 
 .row {
     margin: 10px;
@@ -48,10 +45,14 @@ form {
 
 .venImg {
     color: white;
-    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
     font-family: 'Kaushan Script', cursive;
     font-size: 175%;
     text-align: center;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
 }
 
 #titleCard {
@@ -59,6 +60,11 @@ form {
     padding: 3%;
     border: 5px solid white;
     border-radius: 5px;
+}
+
+#homeTitle {
+    margin: 18% 10%;
+    padding: 3%;
 }
 
 #venPageTitle {
