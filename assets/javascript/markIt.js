@@ -19,18 +19,29 @@ $(document).ready(function() {
     event.preventDefault();
 
     // Grabbed values from text-boxes
-    username = $("#newUser")
-      .val()
-      .trim();
-    email = $("#email")
-      .val()
-      .trim();
-    password = $("#newPass")
-      .val()
-      .trim();
-    checkPass = $("#rePass")
-      .val()
-      .trim();
+    if ($("#newUser").length) {
+      username = $("#newUser")
+        .val()
+        .trim();
+    }
+
+    if ($("#email").length) {
+      email = $("#email")
+        .val()
+        .trim();
+    }
+
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+
+    if ($("#newUser").length) {
+      checkPass = $("#rePass")
+        .val()
+        .trim();
+    }
 
     // Code for "Setting values in the database"
     database.ref("user").push({
@@ -53,12 +64,20 @@ $(document).ready(function() {
   // ---------- Checks if password match ----------
 
   function checkPasswordMatch() {
-    var password = $("#newPass")
-      .val()
-      .trim();
-    var confirmPassword = $("#rePass")
-      .val()
-      .trim();
+    var password = "";
+    var confirmPassword = "";
+    
+    if ($("#newPass").length) {
+      password = $("#newPass")
+        .val()
+        .trim();
+    }
+
+    if ($("#rePass").length) {
+      confirmPassword = $("#rePass")
+        .val()
+        .trim();
+    }
     //Conditions to check if passwords that was typed in matches
     if (password != confirmPassword) {
       $("#CheckPasswordMatch").text("Passwords do not match!");

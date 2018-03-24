@@ -94,3 +94,8 @@ form {
 .map4 {
     float: right;
 }
+
+#weather {
+    border: none;
+    color: white;
+}
