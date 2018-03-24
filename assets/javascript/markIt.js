@@ -93,8 +93,6 @@ $(document).ready(function() {
   //                         Sign-in
   // *********************************************************
 
-  // Current user uid
-  // userId: string;
   // Add a realtime listener
   firebase.auth().onAuthStateChanged(function(user) {
     if (user != null) {
