@@ -114,7 +114,7 @@ $(document).ready(function() {
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
       $(".profile").text(user.email);
-      $(".sign-in").remove();
+      //$(".sign-in").remove(); //Remove sign-in button when a user is signed in
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -174,8 +174,7 @@ $(document).ready(function() {
     alert("You are logged out");
     window.location.replace("index.html");
   });
+  // *********************************************************
+  //                         When Signed In
+  // *********************************************************
 });
-
-// *********************************************************
-//                         When Signed In
-// *********************************************************
