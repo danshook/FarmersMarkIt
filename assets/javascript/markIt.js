@@ -18,7 +18,7 @@ $(document).ready(function() {
   var email = "";
   var password = "";
   var checkPass = "";
-  var name = $("#firstName").val() + "" + $("#lastName").val();
+  var name, photoUrl, uid;
 
   //When user clicks sign up
   //Push values into user object
@@ -46,12 +46,29 @@ $(document).ready(function() {
         .val()
         .trim();
     }
+    var name =
+      $("#firstName")
+        .val()
+        .trim() +
+      " " +
+      $("#lastName")
+        .val()
+        .trim();
+    var vendor = $("#venName")
+      .val()
+      .trim();
+    var type = $("#typeVen").val();
+
+    var bio = $("#bio").val();
 
     // Code for "Setting values in the database"
     database.ref("user").push({
       email: email,
       password: password,
-      name: name
+      name: name,
+      vendor: vendor,
+      type: type,
+      bio: bio
     });
 
     //Create user with password
@@ -171,7 +188,7 @@ $(document).ready(function() {
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
     console.log(user);
-    alert("You are logged out");
+    alert("You are signed out");
     window.location.replace("index.html");
   });
   // *********************************************************
