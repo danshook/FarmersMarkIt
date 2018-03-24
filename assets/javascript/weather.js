@@ -6,6 +6,7 @@ $(document).ready(function(){
 		type: "GET"
 		}).then(function(response){
 			
+
 			var phxWeatherId = "Today's weather: " + response.weather[0].description + " | " + parseInt(response.main.temp_max) + "°" + " / " + parseInt(response.main.temp_min) + "°"
 			
 			$("#weather").text(phxWeatherId);

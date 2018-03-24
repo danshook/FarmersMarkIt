@@ -5,17 +5,19 @@
 }
 
 #weather {
-    border: 1px solid rgb(231, 231, 231);
+    font-family: 'Oswald', sans-serif;
+    border-radius: 7px;
+    background: rgb(40, 143, 41);
+    border: 1.5px solid rgb(39, 134, 42);
     margin-right: 15px;
+    padding: 5px;
+    color: white;
 }
 
 #profile {
     color: white;
 }
 
-.bigImage {
-    height: 600px;
-}
 
 .row {
     margin: 10px;
@@ -48,10 +50,14 @@ form {
 
 .venImg {
     color: white;
-    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
     font-family: 'Kaushan Script', cursive;
     font-size: 175%;
     text-align: center;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
 }
 
 #titleCard {
@@ -59,6 +65,11 @@ form {
     padding: 3%;
     border: 5px solid white;
     border-radius: 5px;
+}
+
+#homeTitle {
+    margin: 18% 10%;
+    padding: 3%;
 }
 
 #venPageTitle {
@@ -80,7 +91,6 @@ form {
 .map1 {
     margin-left: auto;
     margin-right: auto;
-    padding-top:
 }
 
 .map2 {
@@ -95,11 +105,5 @@ form {
     float: right;
 }
 
-#weather {
-    border: none;
-    color: white;
-}
-
 .tempeWeather {
-    padding-bottom:
 }
