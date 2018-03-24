@@ -5,8 +5,13 @@
 }
 
 #weather {
-    border: 1px solid rgb(231, 231, 231);
+    font-family: 'Oswald', sans-serif;
+    border-radius: 7px;
+    background: rgb(40, 143, 41);
+    border: 1.5px solid rgb(39, 134, 42);
     margin-right: 15px;
+    padding: 5px;
+    color: white;
 }
 
 #profile {
@@ -86,7 +91,6 @@ a:hover {
 .map1 {
     margin-left: auto;
     margin-right: auto;
-    padding-top:
 }
 
 .map2 {
@@ -101,11 +105,5 @@ a:hover {
     float: right;
 }
 
-#weather {
-    border: none;
-    color: white;
-}
-
 .tempeWeather {
-    padding-bottom:
 }

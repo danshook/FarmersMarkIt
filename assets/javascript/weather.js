@@ -6,7 +6,7 @@ $(document).ready(function(){
 		type: "GET"
 		}).then(function(response){
 			
-			var phxWeatherId = "Today's weather: " + response.weather[0].description + " | " + parseInt(response.main.temp_min) + "°" + " / " + parseInt(response.main.temp_max) + "°"
+			var phxWeatherId = "Today's Weather: " + response.weather[0].description + " | " + parseInt(response.main.temp_min) + "°" + " / " + parseInt(response.main.temp_max) + "°"
 			
 			$("#weather").text(phxWeatherId);
 			$("#weather").addClass('animated pulse');
