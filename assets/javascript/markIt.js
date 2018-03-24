@@ -48,7 +48,6 @@ $(document).ready(function() {
 
     // Code for "Setting values in the database"
     database.ref("user").push({
-      username: username,
       email: email,
       password: password
     });
