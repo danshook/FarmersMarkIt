@@ -12,18 +12,19 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  //Add to firebase
+
+  //Global variables
+  var username = "";
+  var email = "";
+  var password = "";
+  var checkPass = "";
+  var name = $("#firstName").val() + "" + $("#lastName").val();
 
   //When user clicks sign up
   //Push values into user object
   $("#signUp").on("click", function(event) {
     event.preventDefault();
 
-    var username = "";
-    var email = "";
-    var password = "";
-    var checkPass = "";
-    var name = $("#firstName").val() + "" + $("#lastName").val();
     // Grabbed values from text-boxes
     if ($("#newUser").length) {
       username = $("#newUser")
@@ -113,6 +114,7 @@ $(document).ready(function() {
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
       $(".profile").text(user.email);
+      $(".sign-in").remove();
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -173,3 +175,7 @@ $(document).ready(function() {
     window.location.replace("index.html");
   });
 });
+
+// *********************************************************
+//                         When Signed In
+// *********************************************************
