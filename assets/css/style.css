@@ -80,7 +80,7 @@ form {
 .map1 {
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px;
+    padding-top:
 }
 
 .map2 {
@@ -98,4 +98,8 @@ form {
 #weather {
     border: none;
     color: white;
+}
+
+.tempeWeather {
+    padding-bottom:
 }
