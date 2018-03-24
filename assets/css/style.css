@@ -86,7 +86,7 @@ a:hover {
 .map1 {
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10px;
+    padding-top:
 }
 
 .map2 {
@@ -99,4 +99,13 @@ a:hover {
 }
 .map4 {
     float: right;
+}
+
+#weather {
+    border: none;
+    color: white;
+}
+
+.tempeWeather {
+    padding-bottom:
 }
