@@ -19,6 +19,8 @@
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <!-- Weather JS -->
+        <script type="text/javascript" src="assets/javascript/weather.js"></script>        
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <!-- Reset CSS -->
@@ -39,13 +41,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="index.html">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="signUp.html">Sign In</a>
+                    <a class="nav-link sign-in" href="signUp.html">Sign In</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,9 +64,11 @@
             <div class="navbar-text" id="weather">
                 <!-- Weather.com API -->
             </div>
-            <div class="nav-item dropdown" id="profile">
-                <span class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <!-- username when logged in (remove hidden attr) -->
+            <div class="nav-item dropdown" id="profile" hidden>
+
+                <span class="nav-link dropdown-toggle profile" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                   <!-- username when logged in (remove hidden attr) -->
                 </span>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#">Profile</a>

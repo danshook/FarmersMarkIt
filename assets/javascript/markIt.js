@@ -12,7 +12,13 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  //Add to firebase
+
+  //Global variables
+  var username = "";
+  var email = "";
+  var password = "";
+  var checkPass = "";
+  var name = $("#firstName").val() + "" + $("#lastName").val();
 
   //When user clicks sign up
   //Push values into user object
@@ -30,16 +36,19 @@ $(document).ready(function() {
         .val()
         .trim();
     }
+
     if ($("#email").length) {
       email = $("#email")
         .val()
         .trim();
     }
+
     if ($("#newPass").length) {
       password = $("#newPass")
         .val()
         .trim();
     }
+
     if ($("#rePass").length) {
       checkPass = $("#rePass")
         .val()
@@ -48,21 +57,34 @@ $(document).ready(function() {
 
     // Code for "Setting values in the database"
     database.ref("user").push({
-      username: username,
       email: email,
-      password: password
+      password: password,
+      name: name
     });
+
+    //Create user with password
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.location.replace("index.html"); //Send user to homepage
+      });
   });
 
   // ---------- Checks if password match ----------
   function checkPasswordMatch() {
     var password = "";
     var confirmPassword = "";
+
     if ($("#newPass").length) {
       password = $("#newPass")
         .val()
         .trim();
     }
+
     if ($("#rePass").length) {
       confirmPassword = $("#rePass")
         .val()
@@ -93,8 +115,6 @@ $(document).ready(function() {
   //                         Sign-in
   // *********************************************************
 
-  // Current user uid
-  // userId: string;
   // Add a realtime listener
   firebase.auth().onAuthStateChanged(function(user) {
     if (user != null) {
@@ -104,6 +124,7 @@ $(document).ready(function() {
       // Toggle on/off navigation bar for users' profile and log-out buttons
       $("#profile").removeAttr("hidden");
       $(".profile").text(user.email);
+      $(".sign-in").remove();
     } else {
       // no user is signed in
       console.log("not logged in");
@@ -164,3 +185,7 @@ $(document).ready(function() {
     window.location.replace("index.html");
   });
 });
+
+// *********************************************************
+//                         When Signed In
+// *********************************************************
