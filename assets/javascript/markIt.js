@@ -66,10 +66,9 @@ $(document).ready(function() {
       email: email,
       password: password,
       name: name,
-      vendorName: vendor,
+      vendor: vendor,
       type: type,
-      bio: bio,
-      location: location
+      bio: bio
     });
 
     //Create user with password
@@ -200,32 +199,33 @@ $(document).ready(function() {
   // *********************************************************
 
   //This is to write user info to their page
-  database
-    .ref("vendor/info")
-    .on("child_added", function(childSnapshot, prevChildKey) {
-      console.log(childSnapshot.val());
+  database.ref("vendor/info").on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
 
-      // Store everything into a variable.
-      var name = [childSnapshot.val().name];
-      //var username = [];
-      //username.push(name);
-      var email = childSnapshot.val().email;
-      var vendorName = childSnapshot.val().vendor;
-      var location = childSnapshot.val().location;
-      var type = childSnapshot.val().type;
-      var bio = childSnapshot.val().bio;
+    // Store everything into a variable.
+    var name = childSnapshot.val().name;
+    var email = childSnapshot.val().email;
+    var vendorName = childSnapshot.val().vendor;
+    var location = childSnapshot.val().location;
+    var type = childSnapshot.val().type;
+    var bio = childSnapshot.val().bio;
+    var photo = childSnapshot.val().photo;
 
-      // Vendor Info
-      console.log(name);
-      console.log(email);
-      console.log(vendorName);
-      console.log(location);
-      console.log(type);
-      console.log(bio);
+    // Vendor Info
+    console.log(name);
+    console.log(email);
+    console.log(vendorName);
+    console.log(location);
+    console.log(type);
+    console.log(bio);
 
-      //Add info to HTML
-      for (var i = 0; i < name.length; i++) {
-        $(".card-title").text(name[i]);
-      }
-    });
+    //Add info to HTML
+    $(".all-vendor").append(
+      "<div class='card'> <img class='card-img-top'> <div class='card-body'> <h5 class='card-title vendor-name'>" +
+        vendorName +
+        "</h5><p class='card-text'>" +
+        bio +
+        "</p></div></div>"
+    );
+  });
 });
