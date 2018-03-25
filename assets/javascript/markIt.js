@@ -221,7 +221,7 @@ $(document).ready(function() {
 
     //Add info to HTML
     $(".all-vendor").append(
-      "<div class='card'> <img class='card-img-top'> <div class='card-body'> <h5 class='card-title vendor-name'>" +
+      "<div class='card'> <img class='card-img-top profile-img'> <div class='card-body'> <h5 class='card-title vendor-name'>" +
         vendorName +
         "</h5><p class='card-text'>" +
         bio +
