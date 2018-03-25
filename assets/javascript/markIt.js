@@ -143,7 +143,6 @@ $(document).ready(function() {
   // Event listener for login event
   $("#signIn").on("click", function(event) {
     event.preventDefault();
-
     // Grab user input from email field
     var txtEmail = $("#user")
       .val()
@@ -163,7 +162,6 @@ $(document).ready(function() {
     $("#pass").val("");
 
     // Sign-in
-    // Daniel's ToDo: Verify real email addresses
     firebase
       .auth()
       .signInWithEmailAndPassword(txtEmail, txtPassword)
@@ -188,8 +186,8 @@ $(document).ready(function() {
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
     window.location.replace("index.html");
-    $("#profile").removeAttr("hidden");
-    $(".profile").text("Signed Out");
+    //$("#profile").removeAttr("hidden");
+    //$(".profile").text("Signed Out");
   });
   // *********************************************************
   //                         When Signed In
