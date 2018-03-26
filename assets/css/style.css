@@ -20,21 +20,25 @@
 
 
 .row {
-    margin: 10px;
+    margin-top: 10px;
 }
 
 #signInBox {
-    padding: 50px 0px;
-    background: rgb(223, 223, 223);
-    border: 2px solid rgb(201, 200, 200);
+    padding: 50px 20px;
+    background: rgb(223, 240, 243);
+    border: 2px solid rgb(221, 221, 221);
 }
 
 #signUpBox, #sign {
-    margin-right: 10px;
+    margin: 10px auto;
 }
 
 #sign {
     height: 100%;
+}
+
+.card  {
+    font-family: 'Oswald', sans-serif;
 }
 
 form {
@@ -51,7 +55,6 @@ form {
 .venImg {
     color: white;
     font-family: 'Kaushan Script', cursive;
-    font-size: 175%;
     text-align: center;
 }
 
