@@ -12,14 +12,10 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
+  var storage = firebase.storage();
 
   //Global variables
-  var username = "";
-  var email = "";
-  var password = "";
-  var checkPass = "";
-  var name, photoUrl, uid;
-
+  var name, photoUrl, uid, username, email, password, checkPass;
   //When user clicks sign up
   //Push values into user object
   $("#signUp").on("click", function(event) {
@@ -79,8 +75,8 @@ $(document).ready(function() {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        window.location.replace("index.html"); //Send user to homepage
       });
+    window.location.replace("index.html"); //Send user to homepage
   });
 
   // ---------- Checks if password match ----------
@@ -121,26 +117,6 @@ $(document).ready(function() {
   // *********************************************************
   //                         Sign-in
   // *********************************************************
-
-  //Realtime listener
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user != null) {
-      console.log(user);
-      // user is signed in
-      // alert("You are logged in!");
-      // Toggle on/off navigation bar for users' profile and log-out buttons
-      //window.location.replace("index.html");
-      $("#profile").removeAttr("hidden");
-      $(".profile").text(user.email);
-      $(".sign-in").remove(); //Remove sign-in button when a user is signed in
-    } else {
-      // no user is signed in
-      console.log("not logged in");
-      // alert("Not logged in");
-    }
-  });
-
-  // Event listener for login event
   $("#signIn").on("click", function(event) {
     event.preventDefault();
     // Grab user input from email field
@@ -179,6 +155,20 @@ $(document).ready(function() {
         console.log(error);
       });
   });
+  //Realtime listener
+  //When change in authentication happens
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log(user);
+      // User is signed in
+      $("#profile").removeAttr("hidden");
+      $(".profile").text(user.email);
+      $(".sign-in").remove(); //Remove sign-in button when a user is signed in
+    } else {
+      // User is signed out.
+      console.log("You are not signed in.");
+    }
+  });
   // *********************************************************
   //                         Sign-out
   // *********************************************************
@@ -198,7 +188,7 @@ $(document).ready(function() {
 
   //This is to write user info to their page
   database.ref("vendor/info").on("child_added", function(childSnapshot) {
-    console.log(childSnapshot.val());
+    //console.log(childSnapshot.val());
 
     // Store everything into a variable.
     var name = childSnapshot.val().name;
@@ -210,13 +200,13 @@ $(document).ready(function() {
     var photo = childSnapshot.val().photo;
 
     // Vendor Info
-    console.log(name);
+    /*console.log(name);
     console.log(email);
     console.log(vendorName);
     console.log(location);
     console.log(type);
     console.log(bio);
-
+    */
     //Add info to HTML
     $(".all-vendor").append(
       "<div class='card'> <img class='card-img-top profile-img'> <div class='card-body'> <h5 class='card-title vendor-name'>" +
