@@ -21,22 +21,30 @@ $(document).ready(function() {
   $("#signUp").on("click", function(event) {
     event.preventDefault();
 
+    var username = "";
+    var email = "";
+    var password = "";
+    var checkPass = "";
+
     // Grabbed values from text-boxes
     if ($("#newUser").length) {
       username = $("#newUser")
         .val()
         .trim();
     }
+
     if ($("#email").length) {
       email = $("#email")
         .val()
         .trim();
     }
+
     if ($("#newPass").length) {
       password = $("#newPass")
         .val()
         .trim();
     }
+
     if ($("#rePass").length) {
       checkPass = $("#rePass")
         .val()
@@ -83,11 +91,13 @@ $(document).ready(function() {
   function checkPasswordMatch() {
     var password = "";
     var confirmPassword = "";
+
     if ($("#newPass").length) {
       password = $("#newPass")
         .val()
         .trim();
     }
+
     if ($("#rePass").length) {
       confirmPassword = $("#rePass")
         .val()
