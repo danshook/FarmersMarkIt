@@ -242,7 +242,7 @@ $(document).ready(function() {
         location +
         "</p></div></div>"
     );
-    var profilePic = "http://via.placeholder.com/350x250";
+    var profilePic = "https://via.placeholder.com/350x250";
     $(".profile-img").attr("src", profilePic);
   });
 });
