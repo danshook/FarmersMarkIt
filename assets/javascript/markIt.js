@@ -65,6 +65,12 @@ $(document).ready(function() {
 
     var bio = $("#bio").val();
 
+    var date = $("#date").val();
+
+    var location = $("#location").val();
+
+    var product = $("#product").val();
+
     // Code for "Setting values in the database"
     database.ref("vendor/info").push({
       email: email,
@@ -72,7 +78,10 @@ $(document).ready(function() {
       name: name,
       vendor: vendor,
       type: type,
-      bio: bio
+      bio: bio,
+      date: date,
+      product: product,
+      location: location
     });
 
     //Create user with password
@@ -208,6 +217,7 @@ $(document).ready(function() {
     var type = childSnapshot.val().type;
     var bio = childSnapshot.val().bio;
     var photo = childSnapshot.val().photo;
+    var date = childSnapshot.val().date;
 
     // Vendor Info
     /*console.log(name);
@@ -221,9 +231,18 @@ $(document).ready(function() {
     $(".all-vendor").append(
       "<div class='card'> <img class='card-img-top profile-img'> <div class='card-body'> <h5 class='card-title vendor-name'>" +
         vendorName +
+        "(" +
+        type +
+        ")" +
         "</h5><p class='card-text'>" +
         bio +
+        "</p><p class='card-text'>" +
+        date +
+        " at " +
+        location +
         "</p></div></div>"
     );
+    var profilePic = "http://via.placeholder.com/350x250";
+    $(".profile-img").attr("src", profilePic);
   });
 });
