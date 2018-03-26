@@ -72,7 +72,7 @@
                     <!-- username when logged in (remove hidden attr) -->
                 </span>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="oneVendor.html">Profile</a>
                     <a class="dropdown-item" id="signOut" href="#">Sign Out</a>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <h5>Product Info</h5>
                 </div>
                 <div class="form-group">
-                    <label for="formGroupExampleInput2">Product/Vendor Name</label>
+                    <label for="formGroupExampleInput2">Vendor Name</label>
                     <input type="text" class="form-control" id="venName" placeholder="ex. Sauce Sisters">
                 </div>
                 <div class="form-group">
@@ -137,13 +137,20 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tell Us About Your Next Event</label>
-                            <input type="text" class="form-control" id="schedOneMarket" placeholder="Market/Boutique Name">
+                            <select class="form-control" id="location">
+                                <option>Gilbert Farmers Market</option>
+                                <option>Tempe Farmers Market</option>
+                                <option>Old Town Farmers Market</option>
+                                <option>Ahwatukee Farmers Market</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="schedOneAddress" placeholder="Address">
+                            <label for="formGroupExampleInput">Product</label>
+                            <input type="text" class="form-control" id="product" placeholder="Ex.: Tomato">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="schedOneTime" placeholder="Open Hours">
+                            <label for="formGroupExampleInput">Date</label>
+                            <input type="text" class="form-control" id="date" placeholder="Ex.: Tuesday, March 27th">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info" id="signUp">Sign Up</button>
