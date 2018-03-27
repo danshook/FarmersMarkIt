@@ -1,5 +1,5 @@
 // ---------- Sign up JS ----------
-$(document).ready(function() {
+$(document).ready(function () {
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDKcl2RLFtvO_JaPaHK46UzCjOJ_hp3MPA",
@@ -18,7 +18,7 @@ $(document).ready(function() {
   var name, photoUrl, uid, username, email, password, checkPass;
   //When user clicks sign up
   //Push values into user object
-  $("#signUp").on("click", function(event) {
+  $("#signUp").on("click", function (event) {
     event.preventDefault();
 
     var username = "";
@@ -88,7 +88,7 @@ $(document).ready(function() {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .catch(function(error) {
+      .catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -125,7 +125,7 @@ $(document).ready(function() {
   $("#CheckPasswordMatch").hide();
 
   //Show when password is being typed in
-  $("#rePass").on("keyup", function() {
+  $("#rePass").on("keyup", function () {
     $("#CheckPasswordMatch").show();
   });
   $("#rePass").keyup(checkPasswordMatch);
@@ -136,7 +136,7 @@ $(document).ready(function() {
   // *********************************************************
   //                         Sign-in
   // *********************************************************
-  $("#signIn").on("click", function(event) {
+  $("#signIn").on("click", function (event) {
     event.preventDefault();
     // Grab user input from email field
     var txtEmail = $("#user")
@@ -160,7 +160,7 @@ $(document).ready(function() {
     firebase
       .auth()
       .signInWithEmailAndPassword(txtEmail, txtPassword)
-      .catch(function(error) {
+      .catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -176,7 +176,7 @@ $(document).ready(function() {
   });
   //Realtime listener
   //When change in authentication happens
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       console.log(user);
       // User is signed in
@@ -192,7 +192,7 @@ $(document).ready(function() {
   //                         Sign-out
   // *********************************************************
   // Event listerner for user Sign-out then redirect to home page
-  $("#signOut").on("click", function(event) {
+  $("#signOut").on("click", function (event) {
     firebase.auth().signOut();
     window.location.replace("index.html");
     $("#profile").removeAttr("hidden");
@@ -206,7 +206,7 @@ $(document).ready(function() {
   // *********************************************************
 
   //This is to write user info to their page
-  database.ref("vendor/info").on("child_added", function(childSnapshot) {
+  database.ref("vendor/info").on("child_added", function (childSnapshot) {
     //console.log(childSnapshot.val());
 
     // Store everything into a variable.
@@ -230,27 +230,29 @@ $(document).ready(function() {
     //Add info to HTML
     $(".all-vendor").append(
       "<div class='card'> <img class='card-img-top profile-img'> <div class='card-body'> <h5 class='card-title vendor-name'>" +
-        vendorName +
-        "\n(" +
-        type +
-        ")\n" +
-        "</h5><p class='card-text'>" +
-        bio +
-        "</p><p class='card-text'>" +
-        date +
-        " at " +
-        location +
-        "</p></div></div>"
+      vendorName +
+      "\n(" +
+      type +
+      ")\n" +
+      "</h5><p class='card-text'>" +
+      bio +
+      "</p><p class='card-text'>" +
+      date +
+      " at " +
+      location +
+      "</p></div></div>"
     );
     var profilePic =
       "https://via.placeholder.com/350x250?text=Happy+Birthday+Robbie!"; //placeholder
     $(".profile-img").attr("src", profilePic);
   });
 
-  $(".card").hover(function(){
-    $(this).addClass("animated swing");
-    setTimeout(() => {
-      $(this).removeClass("animated swing");
-    }, 1000 * 30);
-  });
+  function swing() {
+      $(this).addClass("animated swing");
+      setTimeout(() => {
+        $(this).removeClass("animated swing");
+      }, 1000 * 30);
+  };
+
+  $(document).on("mouseover", ".card", swing)
 });
