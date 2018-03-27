@@ -231,9 +231,9 @@ $(document).ready(function() {
     $(".all-vendor").append(
       "<div class='card'> <img class='card-img-top profile-img'> <div class='card-body'> <h5 class='card-title vendor-name'>" +
         vendorName +
-        "(" +
+        "\n(" +
         type +
-        ")" +
+        ")\n" +
         "</h5><p class='card-text'>" +
         bio +
         "</p><p class='card-text'>" +
@@ -242,7 +242,7 @@ $(document).ready(function() {
         location +
         "</p></div></div>"
     );
-    var profilePic = "https://via.placeholder.com/350x250";
+    var profilePic = "https://via.placeholder.com/350x250"; //placeholder
     $(".profile-img").attr("src", profilePic);
   });
 });
