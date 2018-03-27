@@ -195,8 +195,8 @@ $(document).ready(function() {
   $("#signOut").on("click", function(event) {
     firebase.auth().signOut();
     window.location.replace("index.html");
-    //$("#profile").removeAttr("hidden");
-    //$(".profile").text("Signed Out");
+    $("#profile").removeAttr("hidden");
+    $(".profile").text("Signed Out");
   });
   // *********************************************************
   //                         When Signed In
@@ -242,7 +242,8 @@ $(document).ready(function() {
         location +
         "</p></div></div>"
     );
-    var profilePic = "https://via.placeholder.com/350x250"; //placeholder
+    var profilePic =
+      "https://via.placeholder.com/350x250?text=Happy+Birthday+Robbie!"; //placeholder
     $(".profile-img").attr("src", profilePic);
   });
 });
