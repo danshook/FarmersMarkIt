@@ -245,4 +245,11 @@ $(document).ready(function() {
     var profilePic = "https://via.placeholder.com/350x250";
     $(".profile-img").attr("src", profilePic);
   });
+
+  $(".card").hover(function(){
+    $(this).addClass("animated swing");
+    setTimeout(() => {
+      $(this).removeClass("animated swing");
+    }, 1000 * 30);
+  });
 });
