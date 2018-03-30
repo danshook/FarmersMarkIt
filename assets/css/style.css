@@ -75,8 +75,31 @@ a:hover {
     float: right;
 }
 
+.container {
+    min-height: 1500px;
+}
+
 .btn:hover {
     background-color: #34B436;
+}
+
+.venCard {
+    border: .5px solid rgb(224, 224, 224);
+    border-radius: 5px;
+}
+
+#venSched {
+    font-family: 'Oswald', sans-serif;
+}
+
+#venNameCard {
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+    background: rgb(223, 240, 243);
+}
+
+#venInfo {
+    font-size: 150%;
 }
 
 .map1 {
