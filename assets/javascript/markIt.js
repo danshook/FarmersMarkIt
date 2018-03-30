@@ -242,8 +242,7 @@ $(document).ready(function () {
       location +
       "</p></div></div>"
     );
-    var profilePic =
-      "https://via.placeholder.com/350x250?text=Happy+Birthday+Robbie!"; //placeholder
+    var profilePic = "https://via.placeholder.com/350x250?text=Farmers+Market"; //placeholder
     $(".profile-img").attr("src", profilePic);
   });
 
